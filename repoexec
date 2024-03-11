@@ -1,0 +1,23 @@
+#!/bin/sh
+
+#==============================================================================
+#Title            :repoexec
+#Description      :This script will run a command inside all folders.
+#Usage            :sh repoexec "[COMMAND]"
+#==============================================================================
+
+usage() {
+	echo "Usage: repoexec \"[COMMAND]\""
+	echo "Try 'repoexec --help' for more information."
+}
+
+help() {
+	echo "repoexec is used to run a command inside all folders."
+	echo "Usage: repoexec \"[COMMAND]\""
+}
+
+case "$1" in
+    "") usage;;
+	--help) help;;
+	*) ls -d */ | xargs -I % sh -c "cd % && $1 && cd ..";;
+esac
