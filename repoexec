@@ -1,11 +1,5 @@
 #!/bin/sh
 
-#==============================================================================
-#Title            :repoexec
-#Description      :This script will run a command inside all folders.
-#Usage            :sh repoexec "[COMMAND]"
-#==============================================================================
-
 usage() {
 	echo "Usage: repoexec \"[COMMAND]\""
 	echo "Try 'repoexec --help' for more information."

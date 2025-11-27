@@ -1,11 +1,5 @@
 #!/bin/sh
 
-#==============================================================================
-#Title            :webm2mp4
-#Description      :This script will download a webm and convert to mp4.
-#Usage            :sh webm2mp4 [OPTION] [URL]
-#==============================================================================
-
 usage() {
 	echo "Usage: webm2mp4 [OPTION] [URL]"
 	echo "Try 'webm2mp4 --help' for more information."
@@ -19,6 +13,9 @@ menu() {
 }
 
 process() {
+	command -v wget > /dev/null || { echo "'wget' must be installed" >&2; exit 1; }
+	command -v ffmpeg > /dev/null || { echo "'ffmpeg' must be installed" >&2; exit 1; }
+
 	URL=$1
 
 	if [ $1 == "--best" ] ; then 

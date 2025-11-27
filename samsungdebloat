@@ -1,11 +1,5 @@
 #!/bin/bash
 
-#=================================================================================================================
-#Title            :samsungdebloat
-#Description      :This script will remove useless apps and services that come pre-installed on Samsung phones.
-#Usage            :sh samsungdebloat [OPTION]
-#=================================================================================================================
-
 help() {
 	echo "samsungdebloat uses adb to remove useless apps and services that come pre-installed on Samsung phones."
 	printf "\nOptional parameters:"
@@ -14,7 +8,7 @@ help() {
 }
 
 run() {
-    hash adb 2>/dev/null || { echo "'adb' must be installed" >&2; exit 1; }
+    command -v adb > /dev/null || { echo "'adb' must be installed" >&2; exit 1; }
 
     APPS=( "com.android.bips" "com.android.bookmarkprovider" "com.android.chrome" "com.android.hotwordenrollment.okgoogle" "com.android.hotwordenrollment.xgoogle" "com.android.htmlviewer" "com.android.managedprovisioning" "com.android.printspooler" "com.android.providers.partnerbookmarks" "com.android.stk" "com.android.stk2" "com.android.traceur" "com.facebook.appmanager" "com.facebook.katana" "com.facebook.services" "com.facebook.system" "com.google.android.apps.carrier.carrierwifi" "com.google.android.apps.messaging" "com.google.android.apps.setupwizard.searchselector" "com.google.android.apps.tachyon" "com.google.android.apps.turbo" "com.google.android.as" "com.google.android.feedback" "com.google.android.gms.location.history" "com.google.android.googlequicksearchbox" "com.google.android.healthconnect.controller" "com.google.android.nearby.halfsheet" "com.google.android.partnersetup" "com.google.android.printservice.recommendation" "com.google.android.projection.gearhead" "com.google.android.setupwizard" "com.google.android.tts" "com.google.android.youtube" "com.google.ar.core" "com.google.audio.hearing.visualization.accessibility.scribe" "com.hiya.star" "com.knox.vpn.proxyhandler" "com.microsoft.appmanager" "com.microsoft.skydrive" "com.netflix.mediaclient" "com.netflix.partner.activation" "com.opera.max.oem" "com.samsung.android.accessibility.talkback" "com.samsung.android.alive.service" "com.samsung.android.allshare.service.fileshare" "com.samsung.android.allshare.service.mediashare" "com.samsung.android.app.appsedge" "com.samsung.android.app.camera.sticker.facearavatar.preload" "com.samsung.android.app.clipboardedge" "com.samsung.android.app.cocktailbarservice" "com.samsung.android.app.notes.addons" "com.samsung.android.app.parentalcare" "com.samsung.android.app.reminder" "com.samsung.android.appseparation" "com.samsung.android.app.sharelive" "com.samsung.android.app.taskedge" "com.samsung.android.app.watchmanagerstub" "com.samsung.android.ardrawing" "com.samsung.android.aremoji" "com.samsung.android.aremojieditor" "com.samsung.android.arzone" "com.samsung.android.aware.service" "com.samsung.android.beaconmanager" "com.samsung.android.bixbyvision.framework" "com.samsung.android.game.gamehome" "com.samsung.android.game.gametools" "com.samsung.android.homemode" "com.samsung.android.intellivoiceservice" "com.samsung.android.ipsgeofence" "com.samsung.android.kidsinstaller" "com.samsung.android.knox.analytics.uploader" "com.samsung.android.knox.containercore" "com.samsung.android.knox.kpecore" "com.samsung.android.livestickers" "com.samsung.android.location" "com.samsung.android.mapsagent" "com.samsung.android.mdx.quickboard" "com.samsung.android.samsungpositioning" "com.samsung.android.scloud" "com.samsung.android.sdk.handwriting" "com.samsung.android.setupindiaservicestnc" "com.samsung.android.shortcutbackupservice" "com.samsung.android.smartcallprovider" "com.samsung.android.smartface" "com.samsung.android.smartswitchassistant" "com.samsung.android.sm.devicesecurity" "com.samsung.android.spayfw" "com.samsung.android.spaymini" "com.samsung.android.stickercenter" "com.samsung.android.themestore" "com.samsung.android.visionintelligence" "com.samsung.android.visualars" "com.samsung.clipboardsaveservice" "com.samsung.ecomm.global.in" "com.samsung.gpuwatchapp" "com.samsung.klmsagent" "com.samsung.SMT.lang_de_de_f00" "com.samsung.SMT.lang_en_gb_f00" "com.samsung.SMT.lang_es_es_f00" "com.samsung.SMT.lang_fr_fr_f00" "com.samsung.SMT.lang_ru_ru_f00" "com.samsung.storyservice" "com.sec.android.app.chromecustomizations" "com.sec.android.app.DataCreate" "com.sec.android.app.fm" "com.sec.android.app.kidshome" "com.sec.android.app.magnifier" "com.sec.android.app.quicktool" "com.sec.android.app.soundalive" "com.sec.android.app.wlantest" "com.sec.android.autodoodle.service" "com.sec.android.easyMover" "com.sec.android.easyMover.Agent" "com.sec.android.easyonehand" "com.sec.android.mimage.avatarstickers" "com.sec.android.smartfpsadjuster" "com.sec.android.widgetapp.webmanual" "com.sec.enterprise.knox.cloudmdm.smdms" "com.sec.location.nsflp2" "com.sec.spp.push" "com.snap.camerakit.plugin.v1" )
 
@@ -29,6 +23,6 @@ run() {
 }
 
 case "$1" in
-	--help|-h) help;;
+	--help) help;;
 	*|--undo|-u) run $1;;
 esac

@@ -1,11 +1,5 @@
 #!/bin/sh
 
-#===================================================================================================
-#Title            :reposearch
-#Description      :This script will recursively search inside files while ignoring useless folders.
-#Usage            :sh reposearch [PATTERN]
-#===================================================================================================
-
 usage() {
 	echo "Usage: reposearch [PATTERN]"
 	echo "Try 'reposearch --help' for more information."
